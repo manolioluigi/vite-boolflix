@@ -3,37 +3,23 @@
 import { store } from '../store';
 import MovieCard from './MovieCard.vue';
 import SeriesCard from './SeriesCard.vue';
-import axios from 'axios';
 
     export default {
+
+        name: 'AppMain',
 
         components: {
             MovieCard,
             SeriesCard
         },
 
-        name: 'AppMain',
         data() {
             return {
                 store,
-                text: '',
             }
-        },
-
-        methods: {
-        search(text) {
-            let call = store.movieCall + text;
-            axios.get(call).then((response) => {
-                store.movies = response.data.results
-            })
-            let callSeries = store.seriesCall + text;
-            axios.get(callSeries).then((response) => {
-                store.series = response.data.results
-            })
         }
     }
 
-    }
 </script>
 
 <template>
@@ -43,12 +29,6 @@ import axios from 'axios';
         <div class="row">
 
             <div class="col-12">
-
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Cerca un film" v-model="this.text" @keyup.enter="search(this.text)">
-                    <button class="btn btn-outline-secondary" type="button" @click="search(this.text)">Cerca</button>
-                </div>
-                
                 <div>
                     {{ store.movies.length }} Film / {{ store.series.length }} Serie trovati/e
                 </div>

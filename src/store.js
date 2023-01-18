@@ -6,4 +6,5 @@ export const store = reactive({
     movies: [],
     seriesCall: 'https://api.themoviedb.org/3/search/tv?api_key=41fb86ece47e44ca2b2eb2f46467e3a2&language=it-IT&query=',
     series: [],
+    mGlass: false
 });

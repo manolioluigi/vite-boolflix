@@ -30,7 +30,7 @@
 <template>
   
     <div class="card">
-        <img class="img-fluid" :src="`https://www.themoviedb.org/t/p/original/${(movie.poster_path)}`">
+        <img class="img-fluid" :src="`https://www.themoviedb.org/t/p/w342/${(movie.poster_path)}`">
         <div class="content-card">
             <h4>Titolo: {{ movie.title }}</h4>
             <p>Titolo Originale: {{ movie.original_title }}</p>

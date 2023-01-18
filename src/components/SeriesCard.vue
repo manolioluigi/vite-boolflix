@@ -29,7 +29,7 @@
 <template>
 
     <div class="card">
-        <img :src="`https://www.themoviedb.org/t/p/original/${(series.poster_path)}`">
+        <img :src="`https://www.themoviedb.org/t/p/w342/${(series.poster_path)}`">
         <div class="content-card">
             <h4>Titolo: {{ series.name }}</h4>
             <p>Titolo Originale: {{ series.original_name }}</p>

@@ -1,3 +1,5 @@
+@use '../styles/partials/variables.scss' as *;
+@use '../styles/partials/mixins.scss' as *;
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 @import 'node_modules/bootstrap/scss/bootstrap.scss';
 @import "../../node_modules/@fortawesome/fontawesome-free/css/all.min.css";
@@ -8,6 +10,8 @@
     margin: 0;
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
+    background-color: $dark-gray;
+    color: $white;
 }
 
 #app {
@@ -17,4 +21,8 @@
     height: 100%;
     padding: 0;
     margin: 0;
+}
+
+.row {
+    width: 100%;
 }
