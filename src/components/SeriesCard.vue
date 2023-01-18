@@ -1,38 +1,46 @@
 <script>
     export default {
-        name: 'Card',
+        name: 'SeriesCard',
         props: {
-            movie: Object,
             series: Object
         },
+
+        computed: {
+            stars() {
+                let stars = [];
+                for (let i = 0; i < 5; i++) {
+                    if (i < Math.round(this.series.vote_average / 2)) {
+                    stars.push(i);
+                    }
+                }
+                return stars;
+            },
+            emptyStars() {
+                let emptyStars = [];
+                for (let i = 0; i < 5 - Math.round(this.series.vote_average / 2); i++) {
+                    emptyStars.push(i);
+                }
+                return emptyStars;
+            }
+        }
     }
 </script>
 
 <template>
-  
-    <div class="card">
-        <img :src="`https://www.themoviedb.org/t/p/w300/${(movie.poster_path)}`">
-        <div class="content-card">
-            <h4>Titolo: {{ movie.title }}</h4>
-            <p>Titolo Originale: {{ movie.original_title }}</p>
-            <div class="lingua">
-                <span>Lingua originale: </span>
-                <img :src="`https://www.countryflagicons.com/FLAT/64/${(movie.original_language).toUpperCase()}.png`">
-            </div>
-            <p>Voto medio: {{ movie.vote_average }}</p>
-        </div>
-    </div>
 
     <div class="card">
-        <img :src="`https://www.themoviedb.org/t/p/w300/${(series.poster_path)}`">
+        <img :src="`https://www.themoviedb.org/t/p/original/${(series.poster_path)}`">
         <div class="content-card">
             <h4>Titolo: {{ series.name }}</h4>
             <p>Titolo Originale: {{ series.original_name }}</p>
             <div class="lingua">
                 <span>Lingua originale: </span>
-                <img :src="`https://www.countryflagicons.com/FLAT/64/${(series.original_language).toUpperCase()}.png`">
+                <img :src="series.original_language == 'en' ? `https://www.countryflagicons.com/FLAT/64/GB.png` : `https://www.countryflagicons.com/FLAT/64/${series.original_language.toUpperCase()}.png`" :alt="series.original_language">
             </div>
-            <p>Voto medio: {{ series.vote_average }}</p>
+            <p>Voto: 
+                <i v-for="n in stars" class="fa-solid fa-star"></i>
+                <i v-for="n in emptyStars" class="fa-regular fa-star"></i>
+            </p>
         </div>
     </div>
 

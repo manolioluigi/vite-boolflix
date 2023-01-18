@@ -1,13 +1,15 @@
 <script>
 
 import { store } from '../store';
-import Card from './Card.vue';
+import MovieCard from './MovieCard.vue';
+import SeriesCard from './SeriesCard.vue';
 import axios from 'axios';
 
     export default {
 
         components: {
-            Card,
+            MovieCard,
+            SeriesCard
         },
 
         name: 'AppMain',
@@ -43,16 +45,16 @@ import axios from 'axios';
             <div class="col-12">
 
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Cerca un film" v-model="text" @keyup.enter="search(text)">
-                    <button class="btn btn-outline-secondary" type="button" @click="search(inputText)">Cerca</button>
+                    <input type="text" class="form-control" placeholder="Cerca un film" v-model="this.text" @keyup.enter="search(this.text)">
+                    <button class="btn btn-outline-secondary" type="button" @click="search(this.text)">Cerca</button>
                 </div>
                 
                 <div>
                     {{ store.movies.length }} Film / {{ store.series.length }} Serie trovati/e
                 </div>
                 <div class="card-container">
-                    <Card v-for="(item, index) in store.movies" :key="index" :movie="item" />
-                    <Card v-for="(item, index) in store.series" :key="index" :series="item" />
+                    <MovieCard v-for="(item, index) in store.movies" :key="index" :movie="item" />
+                    <SeriesCard v-for="(item, index) in store.series" :key="index" :series="item" />
                 </div>
             </div>
 
