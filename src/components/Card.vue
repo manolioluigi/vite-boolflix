@@ -3,6 +3,7 @@
         name: 'Card',
         props: {
             movie: Object,
+            series: Object
         },
     }
 </script>
@@ -19,6 +20,19 @@
                 <img :src="`https://www.countryflagicons.com/FLAT/64/${(movie.original_language).toUpperCase()}.png`">
             </div>
             <p>Voto medio: {{ movie.vote_average }}</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <img :src="`https://www.themoviedb.org/t/p/w300/${(series.poster_path)}`">
+        <div class="content-card">
+            <h4>Titolo: {{ series.name }}</h4>
+            <p>Titolo Originale: {{ series.original_name }}</p>
+            <div class="lingua">
+                <span>Lingua originale: </span>
+                <img :src="`https://www.countryflagicons.com/FLAT/64/${(series.original_language).toUpperCase()}.png`">
+            </div>
+            <p>Voto medio: {{ series.vote_average }}</p>
         </div>
     </div>
 

@@ -24,6 +24,10 @@ import axios from 'axios';
             axios.get(call).then((response) => {
                 store.movies = response.data.results
             })
+            let callSeries = store.seriesCall + text;
+            axios.get(callSeries).then((response) => {
+                store.series = response.data.results
+            })
         }
     }
 
@@ -43,11 +47,12 @@ import axios from 'axios';
                     <button class="btn btn-outline-secondary" type="button" @click="search(inputText)">Cerca</button>
                 </div>
                 
-                <div class="mb-5">
-                    Ho trovato {{ store.movies.length }} film
+                <div>
+                    {{ store.movies.length }} Film / {{ store.series.length }} Serie trovati/e
                 </div>
                 <div class="card-container">
                     <Card v-for="(item, index) in store.movies" :key="index" :movie="item" />
+                    <Card v-for="(item, index) in store.series" :key="index" :series="item" />
                 </div>
             </div>
 
