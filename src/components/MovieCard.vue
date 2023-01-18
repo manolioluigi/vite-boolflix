@@ -36,7 +36,7 @@
             <p>Titolo Originale: {{ movie.original_title }}</p>
             <div class="lingua">
                 <span>Lingua originale: </span>
-                <img :src="movie.original_language == 'en' ? `https://www.countryflagicons.com/FLAT/64/GB.png` : `https://www.countryflagicons.com/FLAT/64/${movie.original_language.toUpperCase()}.png`" :alt="movie.original_language">
+                <img :src="movie.original_language == 'en' ? `https://www.countryflagicons.com/FLAT/64/GB.png` : movie.original_language == 'ja' ? `https://www.countryflagicons.com/FLAT/64/JP.png` : `https://www.countryflagicons.com/FLAT/64/${movie.original_language.toUpperCase()}.png`" :alt="movie.original_language">
             </div>
             <p>Voto: 
                 <i v-for="n in stars" class="fa-solid fa-star"></i>

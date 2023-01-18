@@ -35,7 +35,7 @@
             <p>Titolo Originale: {{ series.original_name }}</p>
             <div class="lingua">
                 <span>Lingua originale: </span>
-                <img :src="series.original_language == 'en' ? `https://www.countryflagicons.com/FLAT/64/GB.png` : `https://www.countryflagicons.com/FLAT/64/${series.original_language.toUpperCase()}.png`" :alt="series.original_language">
+                <img :src="series.original_language == 'en' ? `https://www.countryflagicons.com/FLAT/64/GB.png` : series.original_language == 'ja' ? `https://www.countryflagicons.com/FLAT/64/JP.png` : `https://www.countryflagicons.com/FLAT/64/${series.original_language.toUpperCase()}.png`" :alt="series.original_language">
             </div>
             <p>Voto: 
                 <i v-for="n in stars" class="fa-solid fa-star"></i>
