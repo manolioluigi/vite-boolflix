@@ -28,19 +28,22 @@
 
 <template>
 
-    <div class="card">
-        <img :src="`https://www.themoviedb.org/t/p/w342/${(series.poster_path)}`">
-        <div class="content-card">
-            <h4>Titolo: {{ series.name }}</h4>
-            <p>Titolo Originale: {{ series.original_name }}</p>
-            <div class="lingua">
-                <span>Lingua originale: </span>
-                <img :src="series.original_language == 'en' ? `https://www.countryflagicons.com/FLAT/64/GB.png` : series.original_language == 'ja' ? `https://www.countryflagicons.com/FLAT/64/JP.png` : `https://www.countryflagicons.com/FLAT/64/${series.original_language.toUpperCase()}.png`" :alt="series.original_language">
+    <div class="card bg-darkgray">
+        <img class="img-fluid poster-bg" :src="`https://www.themoviedb.org/t/p/original/${(series.poster_path)}`">
+        <div class="overlay">
+            <div class="content-card">
+                <h4>{{ series.name }}</h4>
+                <p>Titolo Originale: {{ series.original_name }}</p>
+                <div class="lingua">
+                    <span>Lingua originale: </span>
+                    <img :src="series.original_language == 'en' ? `https://www.countryflagicons.com/FLAT/64/GB.png` : series.original_language == 'ja' ? `https://www.countryflagicons.com/FLAT/64/JP.png` : `https://www.countryflagicons.com/FLAT/64/${series.original_language.toUpperCase()}.png`" :alt="series.original_language">
+                </div>
+                <p>Voto: 
+                    <i v-for="n in stars" class="fa-solid fa-star"></i>
+                    <i v-for="n in emptyStars" class="fa-regular fa-star"></i>
+                </p>
+                <p class="overview my-2">{{ series.overview }}</p>
             </div>
-            <p>Voto: 
-                <i v-for="n in stars" class="fa-solid fa-star"></i>
-                <i v-for="n in emptyStars" class="fa-regular fa-star"></i>
-            </p>
         </div>
     </div>
 
@@ -54,12 +57,12 @@
 
     .card{
         display: flex;
-        width: 20vw;
-        background-color: gray;
+        width: auto;
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
-        font-size: 14px;
+        font-size: 13px;
+        text-align: center;
         img{
             width: 18vw;
         }
@@ -73,13 +76,34 @@
         .content-card{
             display: flex;
             flex-direction: column;
-           
             align-items: center;
+            width: 18vw;
+            padding: 5%;
                 img{
                     width: 20px;
                     margin: 5px;
                 }
+                .overview{
+                height: 15vh;
+                overflow-y: auto;
+                }
         } 
+
+        .overlay{
+            display: none;
+        }
+
+    }
+    .card:hover .overlay{
+        display: block;
+    }
+
+    .card:hover .poster-bg{
+        display: none;
+    }
+
+    .bg-darkgray{
+        background-color: $dark-gray;
     }
 
 </style>

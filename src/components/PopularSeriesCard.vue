@@ -1,15 +1,16 @@
 <script>
+
     export default {
-        name: 'MovieCard',
-        props: {
-            movie: Object
+        name: 'PopularSeriesCard',
+        props:{
+            popularSeries: Object
         },
 
         computed: {
             stars() {
                 let stars = [];
                 for (let i = 0; i < 5; i++) {
-                    if (i < Math.round(this.movie.vote_average / 2)) {
+                    if (i < Math.round(this.popularSeries.vote_average / 2)) {
                     stars.push(i);
                     }
                 }
@@ -17,7 +18,7 @@
             },
             emptyStars() {
                 let emptystars = [];
-                for (let i = 0; i < 5 - Math.round(this.movie.vote_average / 2); i++) {
+                for (let i = 0; i < 5 - Math.round(this.popularSeries.vote_average / 2); i++) {
                     emptystars.push(i);
                 }
                 return emptystars;
@@ -29,26 +30,26 @@
 </script>
 
 <template>
-    
-    <div class="card bg-darkgray">
-        <img class="img-fluid poster-bg" :src="`https://www.themoviedb.org/t/p/w342/${(movie.poster_path)}`">
+  
+  <div class="card bg-darkgray">
+        <img class="img-fluid poster-bg" :src="`https://www.themoviedb.org/t/p/w342/${(popularSeries.poster_path)}`">
         <div class="overlay">
             <div class="content-card">
-                <h5>{{ movie.title }}</h5>
-                <p>Titolo Originale: {{ movie.original_title }}</p>
+                <h5>{{ popularSeries.name }}</h5>
+                <p>Titolo Originale: {{ popularSeries.original_name }}</p>
                 <div class="lingua">
                     <span>Lingua originale: </span>
-                    <img :src="movie.original_language == 'en' ? `https://www.countryflagicons.com/FLAT/64/GB.png` : movie.original_language == 'ja' ? `https://www.countryflagicons.com/FLAT/64/JP.png` : `https://www.countryflagicons.com/FLAT/64/${movie.original_language.toUpperCase()}.png`" :alt="movie.original_language">
+                    <img :src="popularSeries.original_language == 'en' ? `https://www.countryflagicons.com/FLAT/64/GB.png` : popularSeries.original_language == 'ja' ? `https://www.countryflagicons.com/FLAT/64/JP.png` : `https://www.countryflagicons.com/FLAT/64/${popularSeries.original_language.toUpperCase()}.png`" :alt="popularSeries.original_language">
                 </div>
                 <p>Voto: 
                     <i v-for="n in stars" class="fa-solid fa-star"></i>
                     <i v-for="n in emptyStars" class="fa-regular fa-star"></i>
                 </p>
-                <p class="overview my-2">{{ movie.overview }}</p>
+                <p class="overview my-2">{{ popularSeries.overview }}</p>
             </div>
         </div>
     </div>
-    
+
 </template>
 
 <style lang="scss" scoped>

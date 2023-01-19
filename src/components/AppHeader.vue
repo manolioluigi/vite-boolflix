@@ -13,16 +13,24 @@
             }
         },
 
+        created() {
+            this.getPopulars()
+            this.getPopularSeries()
+        },
+
         methods: {
             search(text) {
                 let call = store.movieCall + text;
                 axios.get(call).then((response) => {
                     store.movies = response.data.results
+                    store.movieFlag = true
                 })
                 let callSeries = store.seriesCall + text;
                 axios.get(callSeries).then((response) => {
                     store.series = response.data.results
+                    store.seriesFlag = true
                 })
+                store.popularFlag = false
             },
 
             showBar(){
@@ -32,7 +40,24 @@
                     store.mGlass = false
                 }
                 console.log(store.mGlass)
-            }
+            },
+
+            getPopulars(){
+                let callPopulars = store.popularsCall;
+                axios.get(callPopulars).then((response) => {
+                    store.populars = response.data.results
+                    store.populars = store.populars.slice(0, 5)
+                })
+            },
+
+            getPopularSeries(){
+                let callPopularSeries = store.popularSeriesCall;
+                axios.get(callPopularSeries).then((response) => {
+                    store.popularSeries = response.data.results
+                    store.popularSeries = store.popularSeries.slice(0, 5)
+                })
+            },
+
         }
 
     }
