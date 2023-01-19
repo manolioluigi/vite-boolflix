@@ -59,7 +59,7 @@ import PopularSeriesCard from './PopularSeriesCard.vue';
                 </div>
                 <div class="row" v-if="store.movieFlag">
                     <div class="col-12 my-2 width-100">
-                        <h4>Film trovati</h4>
+                        <h4>{{ store.foundMovies }} Film trovati</h4>
                     </div>
                 </div>
                 <div class="row">
@@ -71,7 +71,7 @@ import PopularSeriesCard from './PopularSeriesCard.vue';
                 </div>
                 <div class="row" v-if="store.seriesFlag">
                     <div class="col-12 my-2 width-100">
-                        <h4>Serie TV trovate</h4>
+                        <h4>{{ store.foundSeries }} Serie TV trovate</h4>
                     </div>
                 </div>
                 <div class="row">

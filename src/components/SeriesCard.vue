@@ -29,7 +29,8 @@
 <template>
 
     <div class="card bg-darkgray">
-        <img class="img-fluid poster-bg" :src="`https://www.themoviedb.org/t/p/original/${(series.poster_path)}`">
+        <img v-if="series.poster_path !== null" class="img-fluid poster-bg" :src="`https://www.themoviedb.org/t/p/original/${(series.poster_path)}`">
+        <img v-if="series.poster_path == null" class="replacement" src="https://media.gqitalia.it/photos/5f2bcea39dfa417e8f7023f3/master/pass/N-icon%20(1).png" :alt="series.original_title">
         <div class="overlay">
             <div class="content-card">
                 <h4>{{ series.name }}</h4>
@@ -65,6 +66,8 @@
         text-align: center;
         img{
             width: 18vw;
+            object-fit: fill;
+            min-height: 100%;
         }
         p{
             margin: 0;
@@ -99,6 +102,10 @@
     }
 
     .card:hover .poster-bg{
+        display: none;
+    }
+
+    .card:hover .replacement{
         display: none;
     }
 

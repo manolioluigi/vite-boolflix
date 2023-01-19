@@ -13,5 +13,7 @@ export const store = reactive({
     mGlass: false,
     movieFlag: false,
     seriesFlag: false,
-    popularFlag: true
+    popularFlag: true,
+    foundMovies: 0,
+    foundSeries: 0
 });

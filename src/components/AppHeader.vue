@@ -24,11 +24,13 @@
                 axios.get(call).then((response) => {
                     store.movies = response.data.results
                     store.movieFlag = true
+                    store.foundMovies = store.movies.length
                 })
                 let callSeries = store.seriesCall + text;
                 axios.get(callSeries).then((response) => {
                     store.series = response.data.results
                     store.seriesFlag = true
+                    store.foundSeries = store.series.length
                 })
                 store.popularFlag = false
             },
