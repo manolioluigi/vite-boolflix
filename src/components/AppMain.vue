@@ -29,9 +29,6 @@ import SeriesCard from './SeriesCard.vue';
         <div class="row">
 
             <div class="col-12">
-                <div>
-                    {{ store.movies.length }} Film / {{ store.series.length }} Serie trovati/e
-                </div>
                 <div class="card-container">
                     <MovieCard v-for="(item, index) in store.movies" :key="index" :movie="item" />
                     <SeriesCard v-for="(item, index) in store.series" :key="index" :series="item" />

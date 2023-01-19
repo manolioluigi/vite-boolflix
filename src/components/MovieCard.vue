@@ -22,13 +22,14 @@
                 }
                 return emptystars;
             }
+
         },
 
     }
 </script>
 
 <template>
-  
+    
     <div class="card">
         <img class="img-fluid" :src="`https://www.themoviedb.org/t/p/w342/${(movie.poster_path)}`">
         <div class="content-card">
@@ -45,7 +46,7 @@
 
         </div>
     </div>
-
+    
 </template>
 
 <style lang="scss" scoped>
@@ -57,7 +58,6 @@
     .card{
         display: flex;
         width: 20vw;
-        background-color: gray;
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
@@ -75,13 +75,13 @@
         .content-card{
             display: flex;
             flex-direction: column;
-           
             align-items: center;
                 img{
                     width: 20px;
                     margin: 5px;
                 }
         } 
+
     }
 
 </style>
